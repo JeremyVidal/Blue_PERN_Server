@@ -11,9 +11,6 @@ const Media = require('../db').import('../models/media');
 // PUT:   http://localhost:3025/media/:entryId
 // DEL:   http://localhost:3025/media/:id
 
-router.get('/', (req, res) => {
-	res.send('Hello World Media!')
-})
 
 // -----  Media Create  -----
 router.post('/create', validateSession, (req,res) =>{
@@ -35,8 +32,8 @@ router.post('/create', validateSession, (req,res) =>{
 // -----Get My Media  -----
 router.get("/", validateSession, (req, res) => {
     let userid = req.user.id;
-    Log.findAll({
-      where: { owner_id: userid },
+    Media.findAll({
+      where: {id: userid },
     })
       .then((media) => res.status(200).json(media))
       .catch((err) => res.status(500).json({ error: err }));
@@ -48,30 +45,26 @@ router.get("/all", (req, res) => {
       .catch((err) => res.status(500).json({ error: err }));
   });
 
-  // -----  Update Media  -----
-
-  // -----  Delete a Media Entry  -----
-
-
-
-router.put('/update/:entryId', (req, res) => {
-	const updateMediaEntry = {
-    type: req.body.media.type,
-    title: req.body.media.title,
-		genre: req.body.media.genre,
-		description: req.body.media.description,
-		rating: req.body.media.rating,
-		consumed: req.body.media.consumed,
-		platform: req.body.media.platform,
-  };
-
-  const query = { where: { id: req.params.entryId, userId: req.user.id } };
-
-  Media.update(updateMediaEntry, query)
-    .then((media) => res.status(200).json(media))
-    .catch((err) => res.status(500).json({ error: err }));
-});
-
-
+  // -----  Update Media  -----  
+  router.put('/update/:entryId', (req, res) => {
+      const updateMediaEntry = {
+          type: req.body.media.type,
+          title: req.body.media.title,
+          genre: req.body.media.genre,
+          description: req.body.media.description,
+          rating: req.body.media.rating,
+          consumed: req.body.media.consumed,
+          platform: req.body.media.platform,
+        };
+        
+        const query = { where: { id: req.params.entryId, userId: req.user.id } };
+        
+        Media.update(updateMediaEntry, query)
+        .then((media) => res.status(200).json(media))
+        .catch((err) => res.status(500).json({ error: err }));
+    });
+    
+    // -----  Delete a Media Entry  -----
+    
 module.exports = router;
 
