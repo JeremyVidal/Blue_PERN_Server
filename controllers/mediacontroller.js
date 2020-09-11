@@ -3,12 +3,9 @@ let router = express.Router();
 let validateSession = require('../middleware/validate-session');
 const Media = require('../db').import('../models/media');
 
-
-// router.get('/media', validateSession, function(req, res)
-// {
-//     res.send('test route for media')
-// })
-// POST: http://localhost:3025/media/create
+router.get('/', (req, res) => {
+	res.send('Hello World Media!')
+})
 
 router.post('/create', validateSession, (req,res) =>{
     const mediaEntry = {
@@ -26,4 +23,5 @@ router.post('/create', validateSession, (req,res) =>{
     .catch(err => res.status(500).json({ error: err}))
 });
 
-module.exports = router
+module.exports = router;
+
