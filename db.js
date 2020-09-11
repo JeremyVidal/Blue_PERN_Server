@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('media','postgres', 'PASS', {
+const sequelize = new Sequelize('media','postgres', process.env.PASS, {
 host: 'localhost',
 dialect: 'postgres'
 });
 
 sequelize.authenticate().then(
 function(){
-console.log('Connected to media postgress database');
+console.log('Connected to media postgres database');
 },
 function(err){
 console.log(err);
