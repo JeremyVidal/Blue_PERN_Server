@@ -14,6 +14,7 @@ const Media = require('../db').import('../models/media');
 router.get('/', (req, res) => {
 	res.send('Hello World Media!')
 })
+
 // -----  Media Create  -----
 router.post('/create', validateSession, (req,res) =>{
     const mediaEntry = {
