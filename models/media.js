@@ -15,6 +15,9 @@ module.exports =(sequelize, DataTypes) => {
         description: {
             type: DataTypes.STRING,
             allowNull: false
+		},
+		rated: {
+			type: DataTypes.STRING
         },
         rating: {
             type: DataTypes.INTEGER
@@ -26,7 +29,8 @@ module.exports =(sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         userId: {
-            type: DataTypes.INTEGER
+			type: DataTypes.INTEGER,
+			allowNull: false
         }
 
     })
