@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 let validateSession = require("../middleware/validate-session");
 
+
 // Endpoints
 // POST:  http://localhost:3025/user/signup
 // POST:  http://localhost:3025/user/login

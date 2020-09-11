@@ -52,5 +52,25 @@ router.get("/all", (req, res) => {
   // -----  Delete a Media Entry  -----
 
 
+
+router.put('/update/:entryId', (req, res) => {
+	const updateMediaEntry = {
+    type: req.body.media.type,
+    title: req.body.media.title,
+		genre: req.body.media.genre,
+		description: req.body.media.description,
+		rating: req.body.media.rating,
+		consumed: req.body.media.consumed,
+		platform: req.body.media.platform,
+  };
+
+  const query = { where: { id: req.params.entryId, userId: req.user.id } };
+
+  Media.update(updateMediaEntry, query)
+    .then((media) => res.status(200).json(media))
+    .catch((err) => res.status(500).json({ error: err }));
+});
+
+
 module.exports = router;
 
