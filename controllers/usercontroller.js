@@ -3,8 +3,11 @@ const User = requre("../db").import("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-//signup
+router.get('/', (req, res) => {
+	res.send('Hello World User!')
+})
 
+//signup
 
 //login
 router.post("/login", (req, res) => {
