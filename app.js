@@ -7,16 +7,6 @@ const sequelize = require('./db');
 sequelize.sync();
 
 
-
-
-
-
-const sequelize = require('./db');
-
-sequelize.sync();
-
-
-
 app.use(express.json());
 app.use(require('./middleware/headers'));
 
