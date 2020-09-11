@@ -31,7 +31,7 @@ router.post("/login", (req, res) => {
           if (matches) {
             let token = jwt.sign(
               { id: user.id, email: user.email },
-              process.env.JWT_SECRET,
+              process.env.SECRETKEY,
               {
                 expiresIn: "1d",
               }
