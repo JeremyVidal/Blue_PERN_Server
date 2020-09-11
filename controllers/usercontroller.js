@@ -3,6 +3,7 @@ const User = require('../db').import('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
+//signup
 router.post('/signup', (req, res) => {
 	User.create({
 		firstName: req.body.firstName,
@@ -20,8 +21,6 @@ router.post('/signup', (req, res) => {
 	})
 	.catch(err => res.status(500).json({ error: err }))
 });
-
-//signup
 
 //login
 router.post("/login", (req, res) => {
