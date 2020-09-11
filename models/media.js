@@ -36,3 +36,4 @@ module.exports =(sequelize, DataTypes) => {
     })
     return Media;
 }
+
