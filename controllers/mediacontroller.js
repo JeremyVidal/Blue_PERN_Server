@@ -65,6 +65,11 @@ router.get("/all", (req, res) => {
     });
     
     // -----  Delete a Media Entry  -----
-    
+	router.delete('/:id', (req, res) => {
+		Media.destroy({where: { id: req.params.id }})
+		.then(media => res.status(200).json(media))
+		.catch(err => res.json(req.errors))
+	})
+	
 module.exports = router;
 
