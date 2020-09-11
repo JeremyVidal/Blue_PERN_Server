@@ -19,10 +19,10 @@ sequelize.sync();
 app.use(express.json());
 app.use(require('./middleware/headers'));
 
-// let user = require('./controllers/usercontroller');
-// app.use('/user', user);
-// let media = require('./controllers/mediacontroller');
-// app.use('/media', media);
+let user = require('./controllers/usercontroller');
+app.use('/user', user);
+let media = require('./controllers/mediacontroller');
+app.use('/media', media);
 
 
 
