@@ -11,8 +11,9 @@ sequelize.sync();
 
 
 
+const sequelize = require('./db');
 
-
+sequelize.sync();
 
 
 
@@ -25,9 +26,7 @@ let media = require('./controllers/mediacontroller');
 app.use('/media', media);
 
 
-
-
-
+app.use(require('./middleware/validate-session'));
 
 
 // Activates app.js

@@ -6,7 +6,7 @@ dialect: 'postgres'
 
 sequelize.authenticate().then(
 	function(){
-		console.log('Connected to media postgress database');
+		console.log('Connected to media postgres database');
 	},
 	function(err){
 		console.log(err);
