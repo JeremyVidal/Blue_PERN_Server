@@ -11,9 +11,9 @@ sequelize.sync();
 
 
 
-const sequelize = require('./db');
 
-sequelize.sync();
+
+
 
 
 

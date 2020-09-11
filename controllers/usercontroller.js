@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const User = require('../db').import('../models/user');
+const validateSession = require('../middleware/validate-session');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
+//signup http://localhost:3025/user/signup
 router.post('/signup', (req, res) => {
 	User.create({
 		firstName: req.body.firstName,
@@ -21,9 +23,8 @@ router.post('/signup', (req, res) => {
 	.catch(err => res.status(500).json({ error: err }))
 });
 
-//signup
 
-//login
+//login  http://localhost:3025/user/login
 router.post("/login", (req, res) => {
   User.findOne({ where: { email: req.body.email } }).then(
     (user) => {
@@ -32,7 +33,7 @@ router.post("/login", (req, res) => {
           if (matches) {
             let token = jwt.sign(
               { id: user.id, email: user.email },
-              process.env.JWT_SECRET,
+              process.env.SECRETKEY,
               {
                 expiresIn: "1d",
               }
@@ -54,4 +55,18 @@ router.post("/login", (req, res) => {
   );
 });
 
+//delete user http://localhost:3025/user/
+router.delete("/", validateSession, function (req, res) {
+  let userid = req.user.id;
+
+  const query = {where: {id: userid}};
+
+  User.destroy(query)
+  .then(() => res.status(200).json({ message: "User Deleted"}))
+  .catch((err) => res.status(500).json({error:err}));
+});
+
 module.exports = router;
+
+
+
