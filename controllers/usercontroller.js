@@ -4,14 +4,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 let validateSession = require("../middleware/validate-session");
 
-
 // Endpoints
 // POST:  http://localhost:3025/user/signup
 // POST:  http://localhost:3025/user/login
 // PUT :  http://localhost:3025/user/
 // DEL :  http://localhost:3025/user/
 
-//signup
+//signup http://localhost:3025/user/signup
 router.post("/signup", (req, res) => {
   User.create({
     firstName: req.body.firstName,
@@ -33,8 +32,7 @@ router.post("/signup", (req, res) => {
 });
 
 
-
-//login
+//login  http://localhost:3025/user/login
 router.post("/login", (req, res) => {
   User.findOne({ where: { email: req.body.email } }).then(
     (user) => {
@@ -65,6 +63,7 @@ router.post("/login", (req, res) => {
   );
 });
 
+
 // -----  Update User  -----
 
 router.put("/", validateSession, (req, res) => {
@@ -81,5 +80,16 @@ router.put("/", validateSession, (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+//delete user http://localhost:3025/user/
+router.delete("/", validateSession, function (req, res) {
+  let userid = req.user.id;
+
+  const query = {where: {id: userid}};
+
+  User.destroy(query)
+  .then(() => res.status(200).json({ message: "User Deleted"}))
+  .catch((err) => res.status(500).json({error:err}));
+});
 
 module.exports = router;
+
