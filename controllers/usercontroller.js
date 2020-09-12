@@ -10,7 +10,10 @@ let validateSession = require("../middleware/validate-session");
 // PUT :  http://localhost:3025/user/
 // DEL :  http://localhost:3025/user/
 
-//signup http://localhost:3025/user/signup
+
+
+// -----  User Signup  -----
+// POST:  http://localhost:3025/user/signup
 router.post("/signup", (req, res) => {
   User.create({
     firstName: req.body.firstName,
@@ -31,8 +34,8 @@ router.post("/signup", (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
-
-//login  http://localhost:3025/user/login
+// -----  User Login  -----
+// POST:  http://localhost:3025/user/login
 router.post("/login", (req, res) => {
   User.findOne({ where: { email: req.body.email } }).then(
     (user) => {
@@ -65,7 +68,7 @@ router.post("/login", (req, res) => {
 
 
 // -----  Update User  -----
-
+// PUT :  http://localhost:3025/user/
 router.put("/", validateSession, (req, res) => {
   let userid = req.user.id;
   const updateUser={
@@ -79,8 +82,8 @@ router.put("/", validateSession, (req, res) => {
     .then((user) => res.status(201).json({ message: `${user} records updated` }))
     .catch((err) => res.status(500).json({ error: err }));
 });
-
-//delete user http://localhost:3025/user/
+// -----  Delete User  -----
+// DEL :  http://localhost:3025/user/
 router.delete("/", validateSession, function (req, res) {
   let userid = req.user.id;
 

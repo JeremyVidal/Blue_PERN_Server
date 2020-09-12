@@ -8,11 +8,12 @@ const Media = require('../db').import('../models/media');
 // POST:  http://localhost:3025/media/create
 // GET:   http://localhost:3025/media/
 // GET:   http://localhost:3025/media/all
-// PUT:   http://localhost:3025/media/:entryId
+// PUT:   http://localhost:3025/media/:id
 // DEL:   http://localhost:3025/media/:id
 
 
 // -----  Media Create  -----
+// POST:  http://localhost:3025/media/create
 router.post('/create', validateSession, (req,res) =>{
     const mediaEntry = {
         type: req.body.media.type,
@@ -30,6 +31,7 @@ router.post('/create', validateSession, (req,res) =>{
     .catch(err => res.status(500).json({ error: err}))
 });
 // -----Get My Media  -----
+// GET:   http://localhost:3025/media/
 router.get("/", validateSession, (req, res) => {
     let userid = req.user.id;
     Media.findAll({
@@ -39,6 +41,7 @@ router.get("/", validateSession, (req, res) => {
       .catch((err) => res.status(500).json({ error: err }));
   });
 // -----  Get All Media -----
+// GET:   http://localhost:3025/media/all
 router.get("/all", (req, res) => {
     Media.findAll()
       .then((media) => res.status(200).json(media))
@@ -46,6 +49,7 @@ router.get("/all", (req, res) => {
   });
 
   // -----  Update Media  -----  
+  // PUT:   http://localhost:3025/media/:id
   router.put('/update/:entryId', (req, res) => {
       const updateMediaEntry = {
           type: req.body.media.type,
@@ -65,6 +69,7 @@ router.get("/all", (req, res) => {
     });
     
     // -----  Delete a Media Entry  -----
+    // DEL:   http://localhost:3025/media/:id
 	router.delete('/:id', (req, res) => {
 		Media.destroy({where: { id: req.params.id }})
 		.then(media => res.status(200).json(media))
