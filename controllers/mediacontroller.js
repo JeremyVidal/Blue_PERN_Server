@@ -50,7 +50,7 @@ router.get("/all", (req, res) => {
 
   // -----  Update Media  -----  
   // PUT:   http://localhost:3025/media/:id
-  router.put('/update/:entryId', (req, res) => {
+  router.put('/update/:id', (req, res) => {
       const updateMediaEntry = {
           type: req.body.media.type,
           title: req.body.media.title,
