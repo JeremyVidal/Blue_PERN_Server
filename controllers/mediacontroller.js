@@ -70,6 +70,8 @@ router.get("/all", (req, res) => {
         .catch((err) => res.status(500).json({ error: err }));
     });
     
+
+    
     // -----  Delete a Media Entry  -----
     // DEL:   http://localhost:3025/media/:id
 	router.delete('/:id', (req, res) => {
