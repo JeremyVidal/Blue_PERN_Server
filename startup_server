@@ -1,0 +1,5 @@
+#!/bin/bash
+open Postman.txt
+open /Applications/Postman.app/
+code ..
+nodemon
