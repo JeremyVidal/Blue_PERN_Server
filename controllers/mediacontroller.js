@@ -32,7 +32,8 @@ router.post('/create', validateSession, (req,res) =>{
 });
 // -----Get My Media  -----
 // GET:   http://localhost:3025/media/
-router.get("/", validateSession, (req, res) => {
+// router.get("/", validateSession, (req, res) => {
+router.get("/", (req, res) => {
     let userid = req.user.id;
     Media.findAll({
       where: {userId: userid },
