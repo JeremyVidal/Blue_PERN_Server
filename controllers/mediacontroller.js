@@ -38,6 +38,7 @@ router.get("/", validateSession, (req, res) => {
     .then((media) => res.status(200).json(media))
     .catch((err) => res.status(500).json({ error: err }));
 });
+
 // -----  Get All Media -----
 // GET:   http://localhost:3025/media/all
 router.get("/all", (req, res) => {
@@ -59,7 +60,7 @@ router.put("/update/:id", validateSession, (req, res) => {
     platform: req.body.media.platform,
   };
 
-  const query = { where: { id: req.params.id, userId: req.user.id } };
+  const query = { where: { id: req.params.id, userId: req.user.id } };      
 
   Media.update(updateMediaEntry, query)
     .then((media) => res.status(200).json(media))
