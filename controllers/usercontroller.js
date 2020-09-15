@@ -36,7 +36,7 @@ router.post("/signup", (req, res) => {
 
 // -----  User Login  -----
 // POST:  http://localhost:3025/user/login
-router.post("/login", validateSession, (req, res) => {
+router.post("/login", (req, res) => {
   User.findOne({ where: { email: req.body.email } }).then(
     (user) => {
       if (user) {
