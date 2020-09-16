@@ -51,13 +51,13 @@ router.get("/all", (req, res) => {
 // PUT:   http://localhost:3025/media/:id
 router.put("/update/:id", validateSession, (req, res) => {
   const updateMediaEntry = {
-    type: req.body.media.type,
-    title: req.body.media.title,
-    genre: req.body.media.genre,
-    description: req.body.media.description,
-    rating: req.body.media.rating,
-    consumed: req.body.media.consumed,
-    platform: req.body.media.platform,
+    type: req.body.type,
+    title: req.body.title,
+    genre: req.body.genre,
+    description: req.body.description,
+    rating: req.body.rating,
+    consumed: req.body.consumed,
+    platform: req.body.platform,
   };
 
   const query = { where: { id: req.params.id, userId: req.user.id } };      
