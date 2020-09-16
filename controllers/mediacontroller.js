@@ -33,7 +33,7 @@ router.post("/create", validateSession, (req, res) => {
 router.get("/", validateSession, (req, res) => {
   let userid = req.user.id;
   Media.findAll({
-    where: { id: userid },
+    where: { userId: userid },
   })
     .then((media) => res.status(200).json(media))
     .catch((err) => res.status(500).json({ error: err }));
