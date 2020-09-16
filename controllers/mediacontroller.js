@@ -41,7 +41,7 @@ router.get("/", validateSession, (req, res) => {
 
 // -----  Get All Media -----
 // GET:   http://localhost:3025/media/all
-router.get("/all", (req, res) => {
+router.get("/all", validateSession, (req, res) => {
   Media.findAll()
     .then((media) => res.status(200).json(media))
     .catch((err) => res.status(500).json({ error: err }));
