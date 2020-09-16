@@ -36,14 +36,14 @@ router.post("/signup", (req, res) => {
 
 // -----  User Login  -----
 // POST:  http://localhost:3025/user/login
-router.post("/login", validateSession, (req, res) => {
+router.post("/login", (req, res) => {
   User.findOne({ where: { email: req.body.email } }).then(
     (user) => {
       if (user) {
         bcrypt.compare(req.body.password, user.password, (err, matches) => {
           if (matches) {
             let token = jwt.sign(
-              { id: user.id, email: user.email },
+              { id: user.id},
               process.env.SECRETKEY,
               {
                 expiresIn: "1d",
