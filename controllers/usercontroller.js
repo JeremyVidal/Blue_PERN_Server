@@ -9,7 +9,7 @@ let validateSession = require("../middleware/validate-session");
 // POST:  http://localhost:3025/user/login
 // PUT :  http://localhost:3025/user/
 // DEL :  http://localhost:3025/user/
-
+// GET :  http://localhost:3025/user/
 
 
 // -----  User Signup  -----
@@ -82,6 +82,7 @@ router.put("/", validateSession, (req, res) => {
     .then((user) => res.status(201).json({ message: `${user} records updated` }))
     .catch((err) => res.status(500).json({ error: err }));
 });
+
 // -----  Delete User  -----
 // DEL :  http://localhost:3025/user/
 router.delete("/", validateSession, function (req, res) {
@@ -93,6 +94,14 @@ router.delete("/", validateSession, function (req, res) {
   .then(() => res.status(200).json({ message: "User Deleted"}))
   .catch((err) => res.status(500).json({error:err}));
 });
+
+// -----  Edit User  -----
+// PUT :  http://localhost:3025/user/
+router.get("/", validateSession, (req, res) => {
+	User.findOne({ where: { id: user.id } })
+	  .then((user) => res.status(201).json(user))
+	  .catch((err) => res.status(500).json({ error: err }));
+  });
 
 module.exports = router;
 
