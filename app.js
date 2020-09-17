@@ -16,7 +16,7 @@ let media = require('./controllers/mediacontroller');
 app.use('/media', media);
 
 
-app.use(require('./middleware/validate-session'));
+// app.use(require('./middleware/validate-session'));
 
 
 // Activates app.js
