@@ -18,7 +18,8 @@ router.post("/signup", (req, res) => {
   User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    email: req.body.email,
+	email: req.body.email,
+    // password: req.body.password
     password: bcrypt.hashSync(req.body.password, 11),
   })
     .then((user) => {
@@ -71,17 +72,21 @@ router.post("/login", (req, res) => {
 // PUT :  http://localhost:3025/user/
 router.put("/", validateSession, (req, res) => {
   let userid = req.user.id;
-  const updateUser={
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-	password: bcrypt.hashSync(req.body.password, 11),
-};
-  const query = { where: {id: userid} };
-  User.update(updateUser, query)
-    .then((user) => res.status(201).json({ message: `${user} records updated` }))
-    .catch((err) => res.status(500).json({ error: err }));
-});
+
+  	const updateUser={
+	  	firstName: req.body.firstName,
+	  	lastName: req.body.lastName,
+	  	email: req.body.email,
+	};
+	if (req.body.password != ''){
+		updateUser.password = bcrypt.hashSync(req.body.password, 11)
+		console.log(req.body.password)
+	}
+  	const query = { where: {id: userid} };
+  	User.update(updateUser, query)
+    	.then((user) => res.status(201).json({ message: `${user} records updated` }))
+    	.catch((err) => res.status(500).json({ error: err }));
+	});
 
 // -----  Delete User  -----
 // DEL :  http://localhost:3025/user/
