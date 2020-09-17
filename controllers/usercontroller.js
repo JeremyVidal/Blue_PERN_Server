@@ -95,10 +95,10 @@ router.delete("/", validateSession, function (req, res) {
   .catch((err) => res.status(500).json({error:err}));
 });
 
-// -----  Edit User  -----
-// PUT :  http://localhost:3025/user/
+// -----  Get User  -----
+// GET :  http://localhost:3025/user/
 router.get("/", validateSession, (req, res) => {
-	User.findOne({ where: { id: user.id } })
+	User.findOne({ where: {id: user.id } })
 	  .then((user) => res.status(201).json(user))
 	  .catch((err) => res.status(500).json({ error: err }));
   });
