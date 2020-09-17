@@ -75,8 +75,8 @@ router.put("/", validateSession, (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 11),
-  };
+	password: bcrypt.hashSync(req.body.password, 11),
+};
   const query = { where: {id: userid} };
   User.update(updateUser, query)
     .then((user) => res.status(201).json({ message: `${user} records updated` }))
@@ -98,7 +98,7 @@ router.delete("/", validateSession, function (req, res) {
 // -----  Get User  -----
 // GET :  http://localhost:3025/user/
 router.get("/", validateSession, (req, res) => {
-	User.findOne({ where: {id: user.id } })
+	User.findOne({ where: {id: req.user.id } })
 	  .then((user) => res.status(201).json(user))
 	  .catch((err) => res.status(500).json({ error: err }));
   });
