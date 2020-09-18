@@ -26,6 +26,7 @@ To allow users to create their own account that allows them to browse and store 
 **Planning Document**
 [Google Doc Planning Document](https://docs.google.com/document/d/1VmRJjEDiV1e3-jRLncTRSR7Ga73T1Pm5mmB2EqZ-5Kw/edit#heading=h.b9u4zrkwzf7f)
 
+**Resources**
 
 
 
