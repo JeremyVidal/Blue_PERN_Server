@@ -23,11 +23,33 @@ Sometimes I have trouble deciding what to read next. I would like a website that
 
 To allow users to create their own account that allows them to browse and store information on media types such as movies, books, and games.  Users will be able to save a list of media descriptions, ratings, etc.. on their account. 
 
-**Planning Document**
-[Google Doc Planning Document](https://docs.google.com/document/d/1VmRJjEDiV1e3-jRLncTRSR7Ga73T1Pm5mmB2EqZ-5Kw/edit#heading=h.b9u4zrkwzf7f)
+
+**Planning Documents**
+
+[Main Planning Document](https://docs.google.com/document/d/1VmRJjEDiV1e3-jRLncTRSR7Ga73T1Pm5mmB2EqZ-5Kw/edit#heading=h.b9u4zrkwzf7f)
+
+[Interactive Wire Frame](https://xd.adobe.com/view/df8898b9-a586-4de6-aa97-076298e180a5-8adb/)
+
+[Data Flow](https://miro.com/app/board/o9J_klvcgS0=/)
+
+[Database Schema](https://dbdiagram.io/d/5f5a3e4c88d052352cb6b5e9)
+
+[Deployed Client](https://tl-my-mediacollection-client.herokuapp.com/)
+
+[Deployed Server](https://tl-my-mediacollection.herokuapp.com/)
+
+[Server Repo](https://github.com/JeremyVidal/Blue_PERN_Server)
+
+[Client Repo](https://github.com/JeremyVidal/Blue_PERN_Client)
+
 
 **Resources**
 
+[React Bootstrap ref:Nav](https://react-bootstrap.github.io/components/navs/)
+
+[React Navigation Actions](https://reactnavigation.org/docs/navigation-actions/)
+
+[React Router/Protected Routes](https://dev.to/mychal/protected-routes-with-react-function-components-dh)
 
 
 Team Members | GitHub Name
