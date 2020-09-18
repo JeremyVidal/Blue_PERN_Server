@@ -10,7 +10,7 @@
   "engines": {
     "node": "12.11.1"
   },
-  "author": "Summer Kerekes ",
+  "author": "Amber Janzen, Summer Kerekes, Jeremy Vidal, Patrick Walls",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.4"
